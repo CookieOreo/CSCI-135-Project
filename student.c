@@ -23,7 +23,7 @@ int read_Student_Attributes(FILE* filePtr, SDT_PTR sptr){
 	sptr->id = id;
 	//allocates memory for this struct
 	sptr->next = (CLS_PTR) malloc(sizeof (CLASS));
-	build_first_class(sptr->next, term, &subject, &catalog_code, &let_grade, num_grade);
+	build_first_class(sptr->next, term, subject, catalog_code, let_grade, num_grade);
 	return num_read;
 }
 
