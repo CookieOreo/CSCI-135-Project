@@ -1,5 +1,5 @@
 /*
-File Name: LinkedList.c
+File Name: buildlist.c
 Name: Zhen Ye Chen (Raymond)
 Description: This is the file that contains the functions that have to deal with single linked lists,
 			 more specifically this file contains functions that pertain to SLL of type CRS_PTR and SDT_PTR.

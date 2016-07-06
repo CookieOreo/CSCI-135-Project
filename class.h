@@ -1,4 +1,7 @@
-
+/*
+File Name: class.h
+Name: Zhen Ye Chen (Raymond)
+*/
 #ifndef CLASS_H
 #define CLASS_H
 

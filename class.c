@@ -1,3 +1,7 @@
+/*
+File Name: class.c
+Name: Zhen Ye Chen (Raymond)
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

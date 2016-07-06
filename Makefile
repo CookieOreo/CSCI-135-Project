@@ -19,6 +19,3 @@ buildlist.o: buildlist.c
 
 clean:
 	rm -f *.o execute
-
-# create linked list of courses
-# 
