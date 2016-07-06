@@ -35,6 +35,7 @@ int read_from_studentfile(FILE* file_ptr, int* id, int* term, char* subject, cha
 }
 
 void print_Student(SDT_PTR sptr){
+	// prints out the id first and then on new lines, prints out their classes indented
 	printf("ID = %d\n", sptr->id);
 	CLS_PTR class = sptr->classesTaken;
 	while (1){
@@ -45,6 +46,7 @@ void print_Student(SDT_PTR sptr){
 }
 
 void build_first_class(CLS_PTR cptr, int term, char* subject, char* catalog_code, char* let_grade, float num_grade){
+	// assigns the proper member variables for the first class in classesTaken
 	cptr->term = term;
 	strcpy(cptr->subject, subject);
 	strcpy(cptr->catalog_code, catalog_code);
@@ -53,7 +55,18 @@ void build_first_class(CLS_PTR cptr, int term, char* subject, char* catalog_code
 	cptr->next = NULL;
 }
 
-
+float calculate_Overall_GPA(SDT_PTR sptr){
+	// caluclates and returns the overall gpa of a single student
+	float total = 0.0;
+	int numOfClasses = 0;
+	class = sptr->classesTaken;
+	while(1){
+		if(class->num_grade != -1.0){
+			total += class->num_grade;
+			numOfClasses++
+		}
+	}
+}
 
 
 

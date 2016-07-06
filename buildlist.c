@@ -97,14 +97,14 @@ void clean_StudentList(SDT_PTR sptr){
 				checkStudent = checkStudent->nextStudent;
 			}
 		}
-		// tests the last line since it won't be checked because of while condition
-		if(checkStudent->id == id){
-			add_Class(sptr, checkStudent);
-			previous->nextStudent = checkStudent->nextStudent;
-		}
 		sptr = sptr->nextStudent;
 	}
 }
+
+int calculate_Overall_GPA(SDT_PTR){
+	// caluclates and returns the overall gpa of a single student
+}
+
 
 
 
