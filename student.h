@@ -14,8 +14,8 @@ Description: This is the header file for student.c that contains the function de
 typedef struct Student {
 	int id;
 	//ClassList classesTaken; //a linked list of Class Objects
-	CLS_PTR next;
-	struct Student* nextstudent;
+	CLS_PTR classesTaken;
+	struct Student* nextStudent;
 } STUDENT, *SDT_PTR;
 
 //declare all external functions to export

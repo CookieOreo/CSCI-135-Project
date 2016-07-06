@@ -12,14 +12,17 @@ char catalog_code[6];
 char let_grade[4];
 FILE* fp;
 
-//builds and then prints out the linked list using StudentData.tsv
+// builds linked list using StudentData.tsv
 fp = fopen("StudentData.tsv", "r");
 SDT_PTR student_head = build_StudentList(fp);
-print_StudentList(student_head);
 fclose(fp);
 
-// //builds and then prings out the linked list using HunterCourses.tsv
+// // builds the linked list using HunterCourses.tsv
 // fp = fopen("HunterCourses.tsv", "r");
 // CRS_PTR course_head = build_CourseList(fp);
-// print_CourseList(course_head);
+// fclose(fp);
+
+// cleans the StudentList linked list
+clean_StudentList(student_head);
+print_StudentList(student_head);
 }

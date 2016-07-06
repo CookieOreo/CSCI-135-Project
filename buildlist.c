@@ -36,10 +36,10 @@ SDT_PTR build_StudentList(FILE* fp){
 	while (attribute > 0){
 		current_node = (SDT_PTR) malloc(sizeof (STUDENT));
 		attribute = read_Student_Attributes(fp, current_node);
-		previous_node->nextstudent = current_node;
+		previous_node->nextStudent = current_node;
 		previous_node = current_node;
 	}
-	current_node->next = NULL;
+	current_node->nextStudent = NULL;
 	return head;
 }
 
@@ -55,8 +55,58 @@ void print_CourseList(CRS_PTR cptr){
 void print_StudentList(SDT_PTR sptr){
 // traverses the list and returns the number of elements traversed
 // prints out the single linked list
-	while(sptr->nextstudent != NULL){
+	while(sptr->nextStudent != NULL){
 		print_Student(sptr);
-		sptr = sptr->nextstudent;
+		sptr = sptr->nextStudent;
 	}
 }
+
+void add_Class(SDT_PTR original, SDT_PTR duplicate){
+// adds duplicate's class to original's list of class/classes
+	CLS_PTR list = original->classesTaken;
+	// reaches the end of the list so we can append this new class
+	while(list->next != NULL){
+		list = list->next;
+	}
+	list->next = duplicate->classesTaken;
+}
+
+void clean_StudentList(SDT_PTR sptr){
+// traverses the list and for every different ID, find all the other classes
+// that this person took and link it to their classTaken list
+// as we traverse the list we "delete" the node once we have added the class
+// to the respective person's classTaken list
+	int id;
+	while(sptr->nextStudent != NULL){
+		id = sptr->id;
+		SDT_PTR checkStudent = sptr->nextStudent;
+		SDT_PTR previous = sptr;
+		while(checkStudent->nextStudent != NULL){
+			if(checkStudent->id == id){
+				add_Class(sptr, checkStudent);
+				// this is the "deleting" line. sets the previous node's next
+				// to this node's next, essentially ignoring this node when 
+				// traversing down the list
+				previous->nextStudent = checkStudent->nextStudent;
+				checkStudent = checkStudent->nextStudent;
+			}
+			else{
+				// condition doesn't pass so we move previous node to current node 
+				// and current node to next node
+				previous = checkStudent;
+				checkStudent = checkStudent->nextStudent;
+			}
+		}
+		// tests the last line since it won't be checked because of while condition
+		if(checkStudent->id == id){
+			add_Class(sptr, checkStudent);
+			previous->nextStudent = checkStudent->nextStudent;
+		}
+		sptr = sptr->nextStudent;
+	}
+}
+
+
+
+
+

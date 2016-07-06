@@ -22,8 +22,8 @@ int read_Student_Attributes(FILE* filePtr, SDT_PTR sptr){
 	int num_read = read_from_studentfile (filePtr, &id, &term, subject, catalog_code, let_grade, &num_grade);
 	sptr->id = id;
 	//allocates memory for this struct
-	sptr->next = (CLS_PTR) malloc(sizeof (CLASS));
-	build_first_class(sptr->next, term, subject, catalog_code, let_grade, num_grade);
+	sptr->classesTaken = (CLS_PTR) malloc(sizeof (CLASS));
+	build_first_class(sptr->classesTaken, term, subject, catalog_code, let_grade, num_grade);
 	return num_read;
 }
 
@@ -35,12 +35,16 @@ int read_from_studentfile(FILE* file_ptr, int* id, int* term, char* subject, cha
 }
 
 void print_Student(SDT_PTR sptr){
-	printf("ID = %d, Term = %d, Subject = %s, Catalog Code = %s, Letter Grade = %s, Number Grade = %.1f \n", sptr->id, sptr->next->term, sptr->next->subject, sptr->next->catalog_code, sptr->next->let_grade, sptr->next->num_grade);
-	//printf("ID = %d\n", sptr->id);//Term = %d, Subject = %s, Catalog Code = %s, Letter Grade = %s, Number Grade = %f \n", sptr->id, sptr->next->term, sptr->next->subject, sptr->next->catalog_code, sptr->next->let_grade, sptr->next->num_grade);
+	printf("ID = %d\n", sptr->id);
+	CLS_PTR class = sptr->classesTaken;
+	while (1){
+		printf("\tTerm = %d, Subject = %s, Catalog Code = %s, Letter Grade = %s, Number Grade = %.1f \n", class->term, class->subject, class->catalog_code, class->let_grade, class->num_grade);
+		if (class->next == NULL) break;
+		class = class->next;
+	}
 }
 
 void build_first_class(CLS_PTR cptr, int term, char* subject, char* catalog_code, char* let_grade, float num_grade){
-
 	cptr->term = term;
 	strcpy(cptr->subject, subject);
 	strcpy(cptr->catalog_code, catalog_code);
@@ -48,3 +52,13 @@ void build_first_class(CLS_PTR cptr, int term, char* subject, char* catalog_code
 	cptr->num_grade = num_grade;
 	cptr->next = NULL;
 }
+
+
+
+
+
+
+
+
+
+
