@@ -59,17 +59,42 @@ float calculate_Overall_GPA(SDT_PTR sptr){
 	// caluclates and returns the overall gpa of a single student
 	float total = 0.0;
 	int numOfClasses = 0;
-	class = sptr->classesTaken;
+	CLS_PTR class = sptr->classesTaken;
+	// traverses through the classesTaken and averages all the numerical grades
 	while(1){
 		if(class->num_grade != -1.0){
 			total += class->num_grade;
-			numOfClasses++
+			numOfClasses++;
 		}
+		if (class->next == NULL) break;
+		class = class->next;
 	}
+	total = total / numOfClasses;
+	// in the scenario where the classes are of grades -1 only
+	if (numOfClasses == 0) total = 0.0;
+	return total;
 }
 
-
-
+float calculate_CSCI_GPA(SDT_PTR sptr){
+	float total = 0.0;
+	int numOfClasses = 0;
+	CLS_PTR class = sptr->classesTaken;
+	char isCompSci[5] = {'C','S','C','I','\0'};
+	// traverses through the classesTaken and averages only the numerical grades
+	// of the classes that are of subject "CSCI".
+	while(1){
+		if(class->num_grade != -1.0 && strcmp(class->subject, isCompSci)){
+			total += class->num_grade;
+			numOfClasses++;
+		}
+		if(class->next == NULL) break;
+		class = class->next;
+	}
+	total = total / numOfClasses;
+	// in the scenario where the classes are of grades -1 only
+	if (numOfClasses == 0) total = 0.0;
+	return total;
+}
 
 
 

@@ -24,5 +24,6 @@ fclose(fp);
 
 // cleans the StudentList linked list
 clean_StudentList(student_head);
-print_StudentList(student_head);
+calculate_GPA(student_head);
+
 }

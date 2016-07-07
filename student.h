@@ -23,4 +23,6 @@ extern int read_Student_Attributes(FILE*, SDT_PTR);
 extern int read_from_studentfile(FILE*, int*, int*, char*, char*, char*, float*);
 extern void print_Student(SDT_PTR);
 extern void build_first_class(CLS_PTR, int, char*, char*, char*, float);
+extern float calculate_Overall_GPA(SDT_PTR);
+extern float calculate_CSCI_GPA(SDT_PTR);
 #endif

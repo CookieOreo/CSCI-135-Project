@@ -101,10 +101,12 @@ void clean_StudentList(SDT_PTR sptr){
 	}
 }
 
-int calculate_Overall_GPA(SDT_PTR){
-	// caluclates and returns the overall gpa of a single student
+void calculate_GPA(SDT_PTR sptr){
+	while(sptr->nextStudent != NULL){
+		printf("ID:%d\tOverall GPA = %.2f\t CSCI GPA = %.2f\n", sptr->id, calculate_Overall_GPA(sptr), calculate_CSCI_GPA(sptr));
+		sptr = sptr->nextStudent;
+	}
 }
-
 
 
 
