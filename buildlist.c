@@ -12,7 +12,7 @@ Description: This is the file that contains the functions that have to deal with
 
 CRS_PTR build_CourseList(FILE* fp){
 	// this function receive a pointer to a data file and read from it
-	// and construct a linked list as it reads the data file.
+	// and construct a linked list of Course as it reads the data file.
 	// returns the head of the list
 	CRS_PTR head, current_node, previous_node;
 	head = (CRS_PTR) malloc(sizeof (COURSE));
@@ -29,6 +29,9 @@ CRS_PTR build_CourseList(FILE* fp){
 }
 
 SDT_PTR build_StudentList(FILE* fp){
+	// this function receive a pointer to a data file and read from it
+	// and construct a linked list of Student as it reads the data file.
+	// returns the head of the list
 	SDT_PTR head, current_node, previous_node;
 	head = (SDT_PTR) malloc(sizeof (STUDENT));
 	int attribute = read_Student_Attributes(fp, head);
@@ -101,7 +104,7 @@ void clean_StudentList(SDT_PTR sptr){
 	}
 }
 
-void calculate_GPA(SDT_PTR sptr){
+void print_calculated_GPA(SDT_PTR sptr){
 	while(sptr->nextStudent != NULL){
 		printf("ID:%d\tOverall GPA = %.2f\t CSCI GPA = %.2f\n", sptr->id, calculate_Overall_GPA(sptr), calculate_CSCI_GPA(sptr));
 		sptr = sptr->nextStudent;
@@ -109,6 +112,15 @@ void calculate_GPA(SDT_PTR sptr){
 }
 
 
+float percent_NLA_courses(SDT_PTR sptr, CRS_PTR head){
+
+}
+
+bool is_NLA_course(CRS_PTR head, int catalog_code){
+	RNL MNL GNL
+	char RNL[4] = {'R','N','L','\0'}
+	while(head->)
+}
 
 
 

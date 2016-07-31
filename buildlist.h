@@ -14,5 +14,5 @@ extern void print_CourseList(CRS_PTR);
 extern void print_StudentList(SDT_PTR);
 extern void clean_StudentList(SDT_PTR);
 extern void clean_StudentList(SDT_PTR);
-extern void calculate_GPA(SDT_PTR);
+extern void print_calculated_GPA(SDT_PTR);
 #endif
